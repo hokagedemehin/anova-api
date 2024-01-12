@@ -161,7 +161,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 # DATABASE URL
 DATABASE_URL = env("DATABASE_URL")
 import dj_database_url
-PROD = env("PROD")
 if not DEBUG:
     db_from_env = dj_database_url.config(
         # default=DATABASE_URL,
