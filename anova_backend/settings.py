@@ -31,7 +31,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,6 +143,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -158,14 +161,14 @@ ACCOUNT_UNIQUE_EMAIL = True
 # DATABASE URL
 DATABASE_URL = env("DATABASE_URL")
 import dj_database_url
-# PROD = env("PROD")
+PROD = env("PROD")
 if not DEBUG:
     db_from_env = dj_database_url.config(
         # default=DATABASE_URL,
         conn_max_age=500
     )
     DATABASES["default"].update(db_from_env)
-    # DATABASES["default"] = db_from_env
+    DATABASES["default"] = db_from_env
 
 SITE_ID = 1
 
