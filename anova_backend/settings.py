@@ -205,14 +205,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
     "http://127.0.0.1:9000",
-    "https://api.lolaadeoti.com",
-    "https://lola-adeoti-bag-frontend.vercel.app",
-    "https://lola-adeoti.com",
-    "https://lolaadeoti.com",
-    "https://www.lola-adeoti.com",
-    "https://www.lolaadeoti.com",
-    "https://api.lolaadeoti.com",
-    "https://lola-adeoti-api-804b1eb3a632.herokuapp.com",
+    "https://anova-api-426ae379974e.herokuapp.com",
+    "https://anova-frontend.vercel.app",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
@@ -222,15 +216,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
     "http://127.0.0.1:9000",
-    # "https://lola-adeoti-backend-new.herokuapp.com",
-    "https://lola-adeoti-bag-frontend.vercel.app",
-    "https://lola-adeoti.com",
-    "https://lola-adeoti.com",
-    "https://lolaadeoti.com",
-    "https://www.lola-adeoti.com",
-    "https://www.lolaadeoti.com",
-    "https://api.lolaadeoti.com",
-    "https://lola-adeoti-api-804b1eb3a632.herokuapp.com",
+    "https://anova-api-426ae379974e.herokuapp.com",
+    "https://anova-frontend.vercel.app",
 ]
 
 # ########### SWAGGER SETTINGS ################
