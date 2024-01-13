@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
-from users.views import GithubLogin, GithubConnect, GoogleLogin
+from users.views import GithubLogin, GithubConnect, GoogleLogin, GoogleConnect
 
 # from drf_yasg.views import get_schema_view
 # from drf_yasg import openapi
@@ -41,6 +41,7 @@ urlpatterns = [
      path('dj-rest-auth/github/', GithubLogin.as_view(), name='github_login'),
      path('dj-rest-auth/github/connect/', GithubConnect.as_view(), name='github_connect'),
      path('dj-rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
+     path('dj-rest-auth/google/connect/', GoogleConnect.as_view(), name='google_connect'),
      path('accounts/', include('allauth.urls')),
     path("bids/", include("bids.urls")),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
