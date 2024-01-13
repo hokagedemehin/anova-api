@@ -29,12 +29,13 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
-
+LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL')
 
 # Application definition
 
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+'django.contrib.sites',
     'users.apps.UsersConfig',
     "bids.apps.BidsConfig",
     # 'drf_yasg',
@@ -58,6 +59,11 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "dj_rest_auth.registration",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.github",
+    #     'oauth2_provider',
+    # 'social_django',
+    # 'drf_social_oauth2',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +92,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -157,6 +165,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # DATABASE URL
 DATABASE_URL = env("DATABASE_URL")
@@ -178,10 +187,13 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "anova_backend.authentication.CustomTokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
+        # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
+        # 'drf_social_oauth2.authentication.SocialAuthentication'
     ],
     # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -189,7 +201,12 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
+    # 'drf_social_oauth2.backends.DjangoOAuth2',
+    # 'social_core.backends.github.GithubOAuth2',
 ]
+
+# SOCIAL_AUTH_GITHUB_KEY = '795162'
+# SOCIAL_AUTH_GITHUB_SECRET = 'e48ec6c6524545d7ce2bf465ffc2d9567ad2fb0a'
 
 REST_AUTH = {
     "SESSION_LOGIN": False,
@@ -218,6 +235,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:9000",
     "https://anova-api-426ae379974e.herokuapp.com",
     "https://anova-frontend.vercel.app",
+    "https://github.com",
 ]
 
 # ########### SWAGGER SETTINGS ################
