@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.github",
+    # 'djoser',
+    # 'social_django',
     #     'oauth2_provider',
     # 'social_django',
     # 'drf_social_oauth2',
@@ -201,6 +203,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
+    # 'social_core.backends.google.GoogleOAuth2',
     # 'drf_social_oauth2.backends.DjangoOAuth2',
     # 'social_core.backends.github.GithubOAuth2',
 ]
@@ -254,3 +257,15 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+# DJOSER = {
+#     "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": [
+#         # "http://localhost:8080",
+#         # "http://localhost:8000",
+#         "http://localhost:3000/verify",
+#         # "https://anova-frontend.vercel.app/verify"
+#     ]
+# }
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET= env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')

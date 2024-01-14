@@ -48,8 +48,8 @@ urlpatterns = [
     # Optional UI:
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    # re_path(r'^auth/', include('drf_social_oauth2.urls', namespace='drf'))
-#     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-#    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-#    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    # re_path(r'^auth/', include('djoser.urls')),
+    # re_path(r'^auth/', include('djoser.urls.authtoken')),
+    # re_path(r'^auth/', include('djoser.social.urls')),
+    # path('', include('social_django.urls', namespace='social')),
 ]
